@@ -1,15 +1,77 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todos</title>
+    <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- Webjars styling -->
+    <link rel="stylesheet" th:href="@{/webjars/todomvc-common/base.css}">
+    <link rel="stylesheet" th:href="@{/webjars/todomvc-app-css/index.css}">
+    <script th:src="@{/webjars/todomvc-common/base.js}"></script>
 </head>
+
 <body>
-    <table th:each="todo : ${todos}">
-        <tr>
-            <td th:text="${todo.todoString}"></td>
-            <td th:text="${todo.completed}"></td>
-        </tr>
-    </table>
+    <section class="todoapp">
+        <header class="header">
+            <h1>Todos</h1>
+            <form th:action="@{/}" method="post" th:object="${item}">
+                <input class="new-todo" type="text" placeholder="What is the todo item?" autofocus th:field="*{task}">
+            </form>
+        </header>
+
+        <section class="main" th:if="${totalTodoElements > 0}">
+            <ul class="todo-list" th:remove="all-but-first">
+                <li th:insert="fragments :: todoItem(${item})" th:each="item : ${todos}" th:remove="tag">
+                </li>
+                </li>
+                <li class="completed">
+                    ...
+                </li>
+                <li>
+                    ...
+                </li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <!-- This should be `0 items left` by default -->
+            <span class="todo-count"><strong>0</strong> item left</span>
+            <!-- Remove this if you don't implement routing -->
+            <ul class="filters">
+                <li>
+                    <a class="selected" href="#/">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">Completed</a>
+                </li>
+            </ul>
+            <!-- Hidden if no completed items are left ↓ -->
+            <button class="clear-completed">Clear completed</button>
+        </footer>
+    </section>
+
+    <footer class="footer" th:if="${totalTodoElements > 0}">
+        <p>Double-click to edit a todo</p>
+        <p>Created by <a href="https://www.linkedin.com/in/dakota-anderson-5045b4167/">Dakota R Anderson</a></p>
+    </footer>
+
+<!--    <section class="main" th:if="${totalTodoElements} > 0">-->
+<!--        <table th:each="todo : ${todos}">-->
+<!--            <tr>-->
+<!--                <td th:text="${todo.todoString}"></td>-->
+<!--                <td th:text="${todo.completed}"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </section>-->
 </body>
 </html>

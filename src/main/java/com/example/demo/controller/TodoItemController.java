@@ -37,7 +37,7 @@ public class TodoItemController {
     public TodoItemModel replaceTodoItem(@PathVariable Long id, @RequestBody TodoItemModel newTodoItem){
         return repository.findById(id)
                 .map(todoItemElement -> {
-                    todoItemElement.setTodoString(newTodoItem.getTodoString());
+                    todoItemElement.setTask(newTodoItem.getTask());
                     todoItemElement.setCompleted(newTodoItem.isCompleted());
                     todoItemElement.setAssignee(newTodoItem.getAssignee());
                     return repository.save(todoItemElement);

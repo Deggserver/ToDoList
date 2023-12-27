@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.TodoItemFormData;
 import com.example.demo.model.TodoItemModel;
 import com.example.demo.repository.TodoItemRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,11 @@ public class TodoPageService {
 
     public List<TodoItemModel> getAllTodoItems(){
         return repository.findAll();
+    }
+
+    public void addNewTodoItem(TodoItemFormData formData) {
+        TodoItemModel newTodo = new TodoItemModel(formData);
+        repository.save(newTodo);
     }
 }
 

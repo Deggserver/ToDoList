@@ -16,12 +16,18 @@ public class TodoItemModel {
     @Id
     @GeneratedValue
     private Long id;
-    private String todoString;
+    private String task;
     private boolean completed;
     private Assignee assignee;
 
-    public TodoItemModel(String todoString) {
-        this.todoString = todoString;
+    public TodoItemModel(String task) {
+        this.task = task;
         this.completed = false;
+    }
+
+    public TodoItemModel(TodoItemFormData formData) {
+        this.task = formData.getTask();
+        this.completed = false;
+        this.assignee = null;
     }
 }
