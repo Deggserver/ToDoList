@@ -8,7 +8,7 @@
             <input class="toggle" type="checkbox"
                    onchange="this.form.submit()"
                    th:attrappend="checked=${item.completed?'true':null}">
-            <label th:text="${item.task}">Taste JavaScript</label>
+            <label th:text="${item.task}">Test element</label>
         </form>
         <form th:action="@{/{id}(id=${item.id})}" th:method="delete">
             <button class="destroy"></button>

@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "67b1b7c5-a747-4108-b15a-151f6317b844",
+		"name": "TodoList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31975883"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/todoItems",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task\": \"Generated todo item\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/todoItems",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"todoItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/todoItem/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/todoItem/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"todoItem",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/todoItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/todoItems",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"todoItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/todoItems/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task\": \"Updated starting data 1\",\r\n    \"completed\": true,\r\n    \"assignee\": \"DAKOTA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/todoItems/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"todoItems",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/todoItems/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/todoItems/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"todoItems",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

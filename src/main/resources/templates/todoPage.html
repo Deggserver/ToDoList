@@ -42,36 +42,21 @@
 
         <footer class="footer">
             <!-- This should be `0 items left` by default -->
-            <span class="todo-count"><strong>0</strong> item left</span>
-            <!-- Remove this if you don't implement routing -->
-            <ul class="filters">
-                <li>
-                    <a class="selected" href="#/">All</a>
-                </li>
-                <li>
-                    <a href="#/active">Active</a>
-                </li>
-                <li>
-                    <a href="#/completed">Completed</a>
-                </li>
-            </ul>
+            <th:block th:unless="${numberOfUncompletedItems == 1}">
+                <span class="todo-count"><strong th:text="${numberOfUncompletedItems}"></strong> items left</span>
+            </th:block>
+            <th:block th:if="${numberOfUncompletedItems == 1}">
+                <span class="todo-count"><strong>1</strong> item left</span>
+            </th:block>
             <!-- Hidden if no completed items are left ↓ -->
-            <button class="clear-completed">Clear completed</button>
+            <form th:action="@{/deleteCompleted}" th:method="delete" th:if="${numberOfCompletedItems > 0}">
+                <button class="clear-completed">Clear completed</button>
+            </form>
         </footer>
     </section>
 
     <footer class="footer" th:if="${totalTodoElements > 0}">
-        <p>Double-click to edit a todo</p>
         <p>Created by <a href="https://www.linkedin.com/in/dakota-anderson-5045b4167/">Dakota R Anderson</a></p>
     </footer>
-
-<!--    <section class="main" th:if="${totalTodoElements} > 0">-->
-<!--        <table th:each="todo : ${todos}">-->
-<!--            <tr>-->
-<!--                <td th:text="${todo.todoString}"></td>-->
-<!--                <td th:text="${todo.completed}"></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </section>-->
 </body>
 </html>
